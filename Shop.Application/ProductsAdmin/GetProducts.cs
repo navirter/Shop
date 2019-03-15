@@ -18,8 +18,9 @@ namespace Shop.Application.ProductsAdmin
         public IEnumerable<ProductViewModel> Do() =>
             _context.Products.ToList().Select(s => new ProductViewModel()
             {
+                Id = s.Id,
                 Name = s.Name,
-                Description = s.Description,
+                ////Description = s.Description,
                 Value = s.Value
             });
 
@@ -27,7 +28,7 @@ namespace Shop.Application.ProductsAdmin
         {
             public int Id { get; set; }
             public string Name { get; set; }
-            public string Description { get; set; }
+            //public string Description { get; set; }
             public decimal Value { get; set; }
         }
     }

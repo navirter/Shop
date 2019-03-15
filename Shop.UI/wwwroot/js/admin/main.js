@@ -2,7 +2,6 @@
     el: '#app',
     data: {
         loading: false,
-        validated: false,
         objectIndex: 0,
         productModel: {
             id: 0,
@@ -12,24 +11,33 @@
         },
         products: []
     },
+    mounted() {
+        this.getProducts();
+    },
     methods: {
-        validation: function () {
-            if (this.productModel.name == ``
-                || this.productModel.description == ''
-                || this.productModel.value == '') {
-                console.log('this.productModel validation fail. A field is empty.');
-                return false;
-            }
-            else
-                return true;
-        },
+        //validation: function () {
+        //    if (this.productModel.name == ``
+        //        || this.productModel.description == ''
+        //        || this.productModel.value == '') {
+        //        console.log('this.productModel validation fail. A field is empty.');
+        //        return false;
+        //    }
+        //    else
+        //        return true;
+        //},
 
         getProduct: function (id) {
             this.loading = true;
-            axios.get('/Admin/product/'+id)
+            axios.get('/Admin/products/'+id)
                 .then(res => {
                     console.log(res);
-                    this.products = res.data;
+                    var product = res.data;
+                    this.productModel = {
+                        id: product.id,
+                        name: product.name,
+                        description: product.description,
+                        value: product.value
+                    };
                 })
                 .catch(err => {
                     console.log(err);
@@ -56,12 +64,8 @@
             this.loading = true;
             axios.post('/Admin/products', this.productModel)
                 .then(res => {
-                    if (this.validation()) {
-                        console.log(res.data);
-                        this.products.push(res.data);
-                    }
-                    else
-                        console.log('res.data is not validated at createProduct.');
+                    console.log(res.data);
+                    this.products.push(res.data);
                 })
                 .catch(err => {
                     console.log(err);
@@ -74,12 +78,8 @@
             this.loading = true;
             axios.put('/Admin/products', this.productModel)
                 .then(res => {
-                    if (this.validation()) {
-                        console.log(res.data);
-                        this.products.splice(this.objectIndex, 1, res.data);
-                    }
-                    else
-                        console.log('res.data is not validated at updateProduct.');
+                    console.log(res.data);
+                    this.products.splice(this.objectIndex, 1, res.data);
                 })
                 .catch(err => {
                     console.log(err);
@@ -102,14 +102,9 @@
                     this.loading = false;
                 });
         },
-        editProduct: function (product, index) {
+        editProduct: function (id, index) {
             this.objectIndex = index;
-            this.productModel = {                
-                id: product.id,
-                name: product.name,
-                description: product.description,
-                value: product.value
-            };
+            this.getProduct(id);
         }
     },
     computed: {

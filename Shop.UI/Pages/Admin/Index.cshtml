@@ -4,11 +4,10 @@
 }
 
 <div id="app">
-    <button v-on:click="getProducts">Get Products</button>
     <div>
         <p v-for="(product, index) in products">
-            {{product.id}} - {{product.name}} - {{product.description}} - {{product.value}}
-            <a @@click="editProduct(product, index)">Edit</a>
+            {{product.id}} - {{product.name}} - {{product.value}}
+            <a @@click="editProduct(product.id, index)">Edit</a>
             <a @@click="deleteProduct(product.id, index)">Remove</a>
         </p>
     </div>

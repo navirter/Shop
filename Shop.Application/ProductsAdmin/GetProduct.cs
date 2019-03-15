@@ -19,6 +19,7 @@ namespace Shop.Application.ProductsAdmin
             _context.Products.ToList().Where(x=> x.Id == id)
             .Select(s => new ProductViewModel()
             {
+                Id = s.Id,
                 Name = s.Name,
                 Description = s.Description,
                 Value = s.Value
