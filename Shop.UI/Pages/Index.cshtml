@@ -4,6 +4,8 @@
     ViewData["Title"] = "Home page";
 }
 
+@*Word 'Model' can be used to access the IndexModelClass instance, which is defined in the Index.cshtml.cs file*@
+
 <div>
     <form method="post">
         <label>Name</label>
@@ -15,3 +17,12 @@
         <input type="submit" value="Save Product" />
     </form>
 </div>>
+
+<div>    
+    @foreach (var product in Model.Products)
+    {
+    <p>
+        @product.Name - @product.Description - @product.Value
+    </p>
+    }
+</div>

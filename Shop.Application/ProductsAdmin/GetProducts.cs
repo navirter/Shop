@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Shop.Application.Products
+namespace Shop.Application.ProductsAdmin
 {
     public class GetProducts
     {
@@ -20,14 +20,15 @@ namespace Shop.Application.Products
             {
                 Name = s.Name,
                 Description = s.Description,
-                Value = s.Value.ToString("N2") + "$"  //1100.50 => 1,100.50 
+                Value = s.Value
             });
 
         public class ProductViewModel
         {
+            public int Id { get; set; }
             public string Name { get; set; }
             public string Description { get; set; }
-            public string Value { get; set; }
+            public decimal Value { get; set; }
         }
     }
 }

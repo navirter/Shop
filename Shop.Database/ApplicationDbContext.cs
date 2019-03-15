@@ -16,5 +16,19 @@ namespace Shop.Database
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Stock> Stock { get; set; }
+        public DbSet<OrderProduct> OrderProducts { get; set; }
+
+        /// <summary>
+        /// Must be overriden to handle many-to-many relationships
+        /// </summary>
+        /// <param name="builder"></param>
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<OrderProduct>()
+                .HasKey(x => new { x.ProductId, x.OrderId });
+        }
     }
 }
