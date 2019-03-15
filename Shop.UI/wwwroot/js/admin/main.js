@@ -15,6 +15,7 @@
         this.getProducts();
     },
     methods: {
+        //dunno how to make it work, hate js
         //validation: function () {
         //    if (this.productModel.name == ``
         //        || this.productModel.description == ''
