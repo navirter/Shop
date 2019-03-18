@@ -5,12 +5,74 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\lib\bulma-0.7.4 - Copy\**" />
+    <Content Remove="wwwroot\lib\bulma-0.7.4 - Copy\**" />
+    <EmbeddedResource Remove="wwwroot\lib\bulma-0.7.4 - Copy\**" />
+    <None Remove="wwwroot\lib\bulma-0.7.4 - Copy\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Shop.Application\Shop.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\bulma-0.7.4\bulma.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\CHANGELOG.md" />
+    <None Include="wwwroot\lib\bulma-0.7.4\css\bulma.css.map" />
+    <None Include="wwwroot\lib\bulma-0.7.4\LICENSE" />
+    <None Include="wwwroot\lib\bulma-0.7.4\README.md" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\.DS_Store" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\base\generic.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\base\helpers.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\base\minireset.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\base\_all.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\components\breadcrumb.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\components\card.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\components\dropdown.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\components\level.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\components\list.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\components\media.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\components\menu.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\components\message.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\components\modal.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\components\navbar.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\components\pagination.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\components\panel.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\components\tabs.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\components\_all.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\elements\box.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\elements\button.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\elements\container.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\elements\content.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\elements\form.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\elements\icon.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\elements\image.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\elements\notification.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\elements\other.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\elements\progress.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\elements\table.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\elements\tag.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\elements\title.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\elements\_all.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\grid\columns.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\grid\tiles.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\grid\_all.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\layout\footer.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\layout\hero.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\layout\section.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\layout\_all.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\utilities\animations.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\utilities\controls.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\utilities\derived-variables.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\utilities\functions.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\utilities\initial-variables.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\utilities\mixins.sass" />
+    <None Include="wwwroot\lib\bulma-0.7.4\sass\utilities\_all.sass" />
   </ItemGroup>
 
 </Project>
