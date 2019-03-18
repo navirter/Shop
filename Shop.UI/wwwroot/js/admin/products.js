@@ -1,53 +1,17 @@
-﻿Vue.component('product-manager', {
-    template: `<div>
-                <div v-if="!editing">
-                    <button class="button" @click="newProduct">Add New Product</button>
-                    <table class="table">
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Value</th>
-                        </tr>
-                        <tr v-for="(product, index) in products">
-                            <td>{{product.id}}</td>
-                            <td>{{product.name}}</td>
-                            <td>{{product.value}}</td>
-                            <td><a @click="editProduct(product.id, index)">Edit</a></td>
-                            <td><a @click="deleteProduct(product.id, index)">Remove</a></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="field" v-else>
-                    <div class="control">
-                        <label class="label">Product Name</label>
-                        <input class="input" v-model="productModel.name" />
-                    </div>
-                    <div class="control">
-                        <label class="label">Product Description</label>
-                        <input class="input" v-model="productModel.description" />
-                    </div>
-                    <div class="control">
-                        <label class="label">Product Value</label>
-                        <input class="input" v-model="productModel.value" />
-                    </div>
-                    <button class="button is-success" @click="createProduct" v-if="!productModel.id">Create Product</button>
-                    <button class="button is-warning" @click="updateProduct" v-else>Update Product</button>
-                    <button class="button" @click="cancel">Cancel</button>
-                </div>
-            </div>`,
-    data: function () {
-        return {
-            editing: false,
-            loading: false,
-            objectIndex: 0,
-            productModel: {
-                id: 0,
-                name: "Product Name",
-                description: "Product Description",
-                value: 1.99
-            },
-            products: []
-        }
+﻿var app = new Vue({
+    el: '#app',
+    data: {
+        menu: 0,
+        editing: false,
+        loading: false,
+        objectIndex: 0,
+        productModel: {
+            id: 0,
+            name: "Product Name",
+            description: "Product Description",
+            value: 1.99
+        },
+        products: []
     },
     mounted() {
         this.getProducts();

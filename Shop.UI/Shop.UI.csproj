@@ -75,4 +75,13 @@
     <None Include="wwwroot\lib\bulma-0.7.4\sass\utilities\_all.sass" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Pages\Admin\_AdminLayout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Admin\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>
