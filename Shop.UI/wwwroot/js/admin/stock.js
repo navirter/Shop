@@ -30,13 +30,27 @@
         updateStock() {
 
         },
-        addStock() {
+        deleteStock(id, index) {
             this.loading = true;
             this.newStock.productId = this.selectedProduct.id;
+            axios.delete('/Admin/stocks/'+id)
+                .then(res => {
+                    console.log(res);
+                    this.selectedProduct.stock.splice(index, 1);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                .then(() => {
+                    this.loading = false;
+                });        
+        },
+        addStock() {
+            this.loading = true;
             axios.post('/Admin/stocks', this.newStock)
                 .then(res => {
                     console.log(res);
-                    this.selectProduct.stock.push(res.data);
+                    this.selectedProduct.stock.push(res.data);
                 })
                 .catch(err => {
                     console.log(err);
