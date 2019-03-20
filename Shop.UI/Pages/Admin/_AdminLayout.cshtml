@@ -6,19 +6,15 @@
     <title>@ViewData["Title"] - Shop.UI</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/css/site.css" />
         <link href="~/lib/bulma-0.7.4/css/bulma.css" rel="stylesheet" />
     </environment>
     <environment exclude="Development">
         @* = include="Production" *@
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         <link href="~/lib/bulma-0.7.4/css/bulma.css" rel="stylesheet" />
     </environment>
 </head>
 <body>
-    <h3 class="has-text-centered">Admin Panel</h3>
-
-    <partial name="_CookieConsentPartial" />
+    <h3 class="title has-text-centered">Admin Panel</h3>
 
     <div class="container">
         <div class="columns">
@@ -26,6 +22,7 @@
                 <div class="menu">
                     <p class="menu-label">Admin Menu</p>
                     <ul class="menu-list">
+                        @*these things point not at the AdminController staff, but at the .cshtml files*@
                         <li><a asp-page="/Admin/Index">Products</a></li>
                         <li><a asp-page="/Admin/Orders">Orders</a></li>
                         <li><a asp-page="/Admin/Stock">Stock</a></li>
@@ -41,13 +38,9 @@
             </div>
         </div>
     </div>
-
-    <environment include="Development">
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

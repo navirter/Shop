@@ -24,8 +24,15 @@ namespace Shop.Application.StockAdmin
                 Description = request.Description,
                 Qty = request.Qty
             };
-            _context.Stock.Add(stock);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Stock.Add(stock);
+                await _context.SaveChangesAsync();
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
             return new Response
             {
                 Id = stock.Id,
