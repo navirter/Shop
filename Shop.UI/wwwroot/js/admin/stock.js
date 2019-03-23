@@ -28,7 +28,28 @@
                 });
         },
         updateStock() {
-
+            this.loading = true;
+            //this.newStock.productId = this.selectedProduct.productId;
+            axios.put('/Admin/stocks/', {
+                stock: this.selectedProduct.stock.map(x => {
+                    return {
+                        id: x.id,
+                        description: x.description,
+                        qty: x.qty,
+                        productId: this.selectedProduct.id
+                    };
+                })
+            })
+                .then(res => {
+                    console.log(res);
+                    this.selectedProduct.stock.splice(index, 1);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                .then(() => {
+                    this.loading = false;
+                });        
         },
         deleteStock(id, index) {
             this.loading = true;

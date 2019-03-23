@@ -17,7 +17,7 @@
             <table class="table">
                 <tr v-for="(stock, index) in selectedProduct.stock">
                     <td><input class="input" v-model="stock.description"/></td>
-                    <td><input class="input" v-model="stock.qty"/></td>
+                    <td><input class="input" type="number" v-model="stock.qty"/></td>
                     <td><a class="has-text-danger" @@click="deleteStock(stock.id, index)">Delete</a></td>
                 </tr>
             </table>
@@ -32,7 +32,7 @@
             </div>
             <div class="field">
                 <div class="control">
-                    <input class="input" v-model="newStock.qty" />
+                    <input class="input" type="number" v-model="newStock.qty" />
                 </div>
             </div>
             <a class="button is-success" @@click="addStock">Add</a>
