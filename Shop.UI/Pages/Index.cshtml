@@ -7,22 +7,11 @@
 @*Word 'Model' can be used to access the IndexModelClass instance, which is defined in the Index.cshtml.cs file*@
 
 <div>
-    <form method="post">
-        @*<label>Name</label>
-        <input asp-for="Product.Name" />
-        <label>Description</label>
-        <input asp-for="Product.Description" />
-        <label>Value</label>
-        <input asp-for="Product.Value" />
-        <input type="submit" value="Save Product" />*@
-    </form>
-</div>>
-
-<div>    
     @foreach (var product in Model.Products)
     {
-    <p>
-        @product.Name - @product.Description - @product.Value
-    </p>
+        <a asp-page="Product" asp-route-name="@product.Name.Replace(" ", "-")">@*this asp-route-name thing works because i specified he route at the product.cshtml after page*@
+            @product.Name - @product.Description - @product.Value
+        </a>
+        <br/>
     }
 </div>
