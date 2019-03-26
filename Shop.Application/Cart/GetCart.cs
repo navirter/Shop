@@ -29,22 +29,26 @@ namespace Shop.Application.Cart
             public int Qty { get; set; }
         }
 
-        public Response Do()
-        {
-            //TODO: account for multiple items in the cart
+        public IEnumerable<Response> Do()
+        { 
             string str = _session.GetString("cart");
-            var cartProduct = JsonConvert.DeserializeObject<CartProduct>(str);
+            if (string.IsNullOrEmpty(str))
+            {
+                return new List<Response>();
+            }
+            var cartList = JsonConvert.DeserializeObject<List<CartProduct>>(str);
+
             var response = _context.Stock
                 .Include(x => x.Product)
-                .Where(x => x.Id == cartProduct.StockId)
+                .Where(x => cartList.Any(s=> s.StockId == x.Id))
                 .Select(x => new Response
                 {
                     Name = x.Product.Name,
                     Value = x.Product.Value.ToString("N2") + "$",
                     StockId = x.Id,
-                    Qty = cartProduct.Qty
+                    Qty = cartList.FirstOrDefault(s => s.StockId == x.Id).Qty
                 })
-                .FirstOrDefault();
+                .ToList();
             return response;
         }
     }

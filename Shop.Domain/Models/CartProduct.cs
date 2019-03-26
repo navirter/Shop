@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Shop.Domain.Models
 {
+    //stored in the session
     public class CartProduct
     {
         public int StockId { get; set; }

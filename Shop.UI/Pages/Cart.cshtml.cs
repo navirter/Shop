@@ -18,11 +18,12 @@ namespace Shop.UI.Pages
             _context = context;
         }
 
-        public GetCart.Response Cart { get; set; }        
+        public IEnumerable<GetCart.Response> Cart { get; set; }        
 
         public IActionResult OnGet()
         {
-            Cart = new GetCart(HttpContext.Session, _context).Do();
+            if (HttpContext.Session != null)
+                Cart = new GetCart(HttpContext.Session, _context).Do();
 
             return Page();
         }
