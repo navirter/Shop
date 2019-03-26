@@ -9,9 +9,11 @@
 <div>
     @foreach (var product in Model.Products)
     {
-        <a asp-page="Product" asp-route-name="@product.Name.Replace(" ", "-")">@*this asp-route-name thing works because i specified he route at the product.cshtml after page*@
-            @product.Name - @product.Description - @product.Value
-        </a>
-        <br/>
-    }
+        <a asp-page="Product" asp-route-name="@product.Name.Replace(" ", "-")">
+            @*this asp-route-name thing works because i specified he route at the product.cshtml after page*@
+        @product.Name - @product.Description - @product.Value
+    </a>
+    <br />
+}
 </div>
+@await Component.InvokeAsync("Cart", new { view = "Small"})

@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model IEnumerable<Shop.Application.Cart.GetCart.Response>
+@{
+}
+
+
+<div>
+    <h2>Small Cart Component</h2>
+    @foreach (var product in Model)
+    {
+        <p>@product.Name</p>
+        <p>@product.Value</p>
+        <p>@product.Qty</p>
+        <p>@product.StockId</p>
+        <hr/>
+    }
+</div>
