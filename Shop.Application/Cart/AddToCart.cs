@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Shop.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
@@ -19,7 +20,7 @@ namespace Shop.Application.Cart
 
         public class Request
         {
-            public int StockId{ get; set; }
+            public int StockId { get; set; }
             public int Qty { get; set; }
         }
 
