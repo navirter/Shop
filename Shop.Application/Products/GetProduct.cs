@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Shop.Application.Products
 {
@@ -16,23 +17,38 @@ namespace Shop.Application.Products
             _context = context;
         }
 
-        public ProductViewModel Do(string name) =>
-            _context.Products
-            .Include(s => s.Stock)
-            .Where(s => s.Name == name)
-            .Select(s => new ProductViewModel()
+        public async Task<ProductViewModel> Do(string name)
+        {
+
+            var stocksOnHold = _context.StocksOnHold.Where(x => x.ExpiryDate < DateTime.Now).ToList();
+            if (stocksOnHold.Count > 0)
             {
-                Name = s.Name,
-                Description = s.Description,
-                Value = s.Value.ToString("N2") + "$",  //1100.50 => 1,100.50
-                Stock = s.Stock.Select(x => new StockViewModel
+                var stocksToReturn = _context.Stock.Where(x => stocksOnHold.Any(y => y.StockId == x.Id)).ToList();
+                foreach (var stock in stocksToReturn)
                 {
-                    Id = x.Id,
-                    Description = x.Description,
-                    InStock = x.Qty > 0
-                })
-            })
-            .FirstOrDefault();
+                    stock.Qty += stocksOnHold.FirstOrDefault(x => x.StockId == stock.Id).Qty;
+                }
+                _context.StocksOnHold.RemoveRange(stocksOnHold);
+                await _context.SaveChangesAsync();
+            }
+
+            return _context.Products
+               .Include(s => s.Stock)
+               .Where(s => s.Name == name)
+               .Select(s => new ProductViewModel()
+               {
+                   Name = s.Name,
+                   Description = s.Description,
+                   Value = s.Value.ToString("N2") + "$",  //1100.50 => 1,100.50
+                Stock = s.Stock.Select(x => new StockViewModel
+                   {
+                       Id = x.Id,
+                       Description = x.Description,
+                       InStock = x.Qty > 0
+                   })
+               })
+               .FirstOrDefault();
+        }
 
         public class ProductViewModel
         {
