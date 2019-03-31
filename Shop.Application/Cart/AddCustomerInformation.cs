@@ -48,7 +48,7 @@ namespace Shop.Application.Cart
         public void Do(Request request)
         {
             var str = JsonConvert.SerializeObject(request);
-            _session.SetString("customer-info", str);
+            _session.SetString("customer-information", str);
         }
 
     }
