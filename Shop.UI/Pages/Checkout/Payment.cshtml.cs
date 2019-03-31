@@ -56,7 +56,7 @@ namespace Shop.UI.Pages.Checkout
 
             await new CreateOrder(_context).Do(new CreateOrder.Request
             {
-                StripeReference = charge.OrderId,
+                StripeReference = charge.Id,
 
                 FirstName = CartOrder.CustomerInformation.FirstName,
                 LastName = CartOrder.CustomerInformation.LastName,
