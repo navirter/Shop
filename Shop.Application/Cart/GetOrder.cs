@@ -25,6 +25,8 @@ namespace Shop.Application.Cart
         {
             public IEnumerable<Product> Products { get; set; }
             public CustomerInformation CustomerInformation { get; set; }
+
+            public int GetTotalCharge() => Products.Sum(s => s.Value * s.Qty);
         }
 
         public class Product
@@ -76,14 +78,14 @@ namespace Shop.Application.Cart
                 Products = listOfProducts,
                 CustomerInformation = new CustomerInformation
                 {
-                    FirstName = customerInfo.FirstName,
-                    LastName = customerInfo.LastName,
-                    Email = customerInfo.Email,
-                    PhoneNumber = customerInfo.PhoneNumber,
-                    Address1 = customerInfo.Address1,
-                    Address2 = customerInfo.Address2,
-                    City = customerInfo.City,
-                    PostCode = customerInfo.PostCode
+                    FirstName = customerInformation.FirstName,
+                    LastName = customerInformation.LastName,
+                    Email = customerInformation.Email,
+                    PhoneNumber = customerInformation.PhoneNumber,
+                    Address1 = customerInformation.Address1,
+                    Address2 = customerInformation.Address2,
+                    City = customerInformation.City,
+                    PostCode = customerInformation.PostCode
                 }
             };
         }
