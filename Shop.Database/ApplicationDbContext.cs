@@ -19,6 +19,7 @@ namespace Shop.Database
         public DbSet<Order> Orders { get; set; }
         public DbSet<Stock> Stock { get; set; }
         public DbSet<OrderStock> OrderStocks { get; set; }
+        public DbSet<StockOnHold> StocksOnHold { get; set; }
 
         /// <summary>
         /// Must be overriden to handle many-to-many relationships
