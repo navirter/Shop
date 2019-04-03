@@ -41,7 +41,7 @@ namespace Shop.UI.Controllers
         const string stocks = "stocks";
         [HttpGet(stocks)]
         public IActionResult GetStock() => Ok(new GetStock(_context).Do());
-
+         
         [HttpPost(stocks)]
         public async Task<IActionResult> CreateStock([FromBody]CreateStock.Request request) => Ok(await new CreateStock(_context).Do(request));
 
