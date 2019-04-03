@@ -6,6 +6,7 @@
 
 @*Word 'Model' can be used to access the IndexModelClass instance, which is defined in the Index.cshtml.cs file*@
 
+<br/>
 <div>
     @foreach (var product in Model.Products)
     {
@@ -16,4 +17,5 @@
     <br />
 }
 </div>
+<br/>
 @await Component.InvokeAsync("Cart", new { view = "Small"})

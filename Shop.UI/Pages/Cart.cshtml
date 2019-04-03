@@ -5,14 +5,16 @@
 
 
 <div>
-    @foreach (var product in Model.Cart)
+    @foreach (var product in Model.Cart.ProductViewModels)
     {
         <p>@product.Name</p>
-        <p>@product.Value</p>
+        <p>@product.ValueToShow</p>
         <p>@product.Qty</p>
         <p>@product.StockId</p>
         <hr />
     }
+    <label>Total sum: @Model.Cart.TotalPrice</label>
+    <label><a asp-page="/Checkout/Payment">Payment page</a></label>
 </div>
 
 

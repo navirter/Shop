@@ -2,19 +2,21 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-@model IEnumerable<Shop.Application.Cart.GetCart.Response>
+@model Shop.Application.Cart.GetCart.Response
 @{
 }
 
 
 <div>
     <h2>Small Cart Component</h2>
-    @foreach (var product in Model)
+    @foreach (var product in Model.ProductViewModels)
     {
         <p>@product.Name</p>
-        <p>@product.Value</p>
+        <p>@product.ValueToShow</p>
         <p>@product.Qty</p>
         <p>@product.StockId</p>
-        <hr/>
+        <hr />
     }
+    <label>Total sum: @Model.TotalPrice</label>
+    <label><a asp-page="/Checkout/Payment">Payment page</a></label>
 </div>

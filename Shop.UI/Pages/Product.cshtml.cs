@@ -38,7 +38,7 @@ namespace Shop.UI.Pages
             bool res = await new AddToCart(HttpContext.Session, _context).Do(CartViewModel);
             if (res)
             {
-                return RedirectToPage("Cart");
+                return RedirectToPage("Index");
             }
             else
             {
