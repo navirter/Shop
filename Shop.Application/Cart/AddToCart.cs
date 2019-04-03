@@ -35,6 +35,8 @@ namespace Shop.Application.Cart
 
         public async Task<bool> Do(Request request)
         {
+            var stockOnHold = _context.StocksOnHold.Where(x => x.SessionId == _session.Id).ToList();
+            //check if it really restores the amount  of stock after expiry
             var stockToHold = _context.Stock.Where(x => x.Id == request.StockId).FirstOrDefault();
             if (stockToHold.Qty < request.Qty)            
                 return false;
@@ -42,10 +44,13 @@ namespace Shop.Application.Cart
             _context.StocksOnHold.Add(new StockOnHold
             {
                 StockId = stockToHold.Id,
-                Qty = stockToHold.Qty,
+                Qty = request.Qty,
+                SessionId = _session.Id,
                 ExpiryDate = DateTime.Now.AddMinutes(20)
             });
             stockToHold.Qty -= request.Qty;
+            foreach (var stock in stockOnHold)
+                stock.ExpiryDate = DateTime.Now.AddMinutes(20);
             await _context.SaveChangesAsync();
 
             var cartList = new List<CartProduct>();
