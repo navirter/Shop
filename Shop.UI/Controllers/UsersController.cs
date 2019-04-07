@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Shop.Database;
 using Shop.Application.StockAdmin;
 using Microsoft.AspNetCore.Authorization;
+using Shop.Application.UsersAdmin;
 
 namespace Shop.UI.Controllers
 {
@@ -14,15 +15,20 @@ namespace Shop.UI.Controllers
     [Authorize(Policy = "Admin")]
     //[Authorize(Policy = "Admin")] if added along with the previous line, it's neccessary to be both manager and admin to access things
     //so basically only the admin would be able to do things which is unwanted
-    public class AdminController:Controller
+    public class UsersController:Controller
     {
-        private ApplicationDbContext _context;
+        private CreateUser _createUser;
 
-        public AdminController(ApplicationDbContext context)
+        public UsersController(CreateUser createUser)
         {
-            _context = context;
+            _createUser = createUser;
         }
-        
+
+        public async Task<IActionResult> CreateUser([FromBody] CreateUser.Request request)
+        {
+            await _createUser.Do(request);
+            return Ok();
+        }
         
     }
 }
