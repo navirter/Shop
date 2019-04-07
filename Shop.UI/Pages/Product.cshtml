@@ -3,23 +3,66 @@
 @{
 }
 
-
-<div>
-    <p>@Model.Product.Name</p>
-    <p>@Model.Product.Description</p>
-    <p>@Model.Product.Value</p>
-    <form method="post">
-        <label>Stock</label>
-        <select asp-for="CartViewModel.StockId">
-            @foreach (var s in Model.Product.Stock)
-            {
-                <option value="@s.Id">@s.Description</option>
-            }
-        </select>
-        <label>Qty</label>
-        <input asp-for="CartViewModel.Qty" />
-        <button type="submit">Submit</button>
-    </form>
+<div class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-6">
+                    <figure class="image">
+                        <img src="~/images/Queek Headtaker.jpg" />
+                    </figure>
+                </div>
+                <div class="column is-6">
+                    <section class="content">
+                        <header>
+                            <p class="title">@Model.Product.Name</p>
+                            <p class="subtitle">@Model.Product.Description</p>
+                        </header>
+                        <main>
+                            Some information obout the item from the main block.
+                        </main>
+                        <footer>
+                            <br />
+                            <form method="post">
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Size</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field is-narrow">
+                                            <div class="control">
+                                                <div class="select is-fullwidth">
+                                                    <select asp-for="CartViewModel.StockId">
+                                                        @foreach (var s in Model.Product.Stock)
+                                                        {
+                                                            <option value="@s.Id">@s.Description</option>
+                                                        }
+                                                    </select> @*it has to be wrapped like this*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Quantity</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field is-narrow">
+                                            <div class="control">
+                                                <input class="control" asp-for="CartViewModel.Qty" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit">Submit</button>
+                            </form>
+                        </footer>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-@await Component.InvokeAsync("Cart", new { view = "Small"})
+@*@await Component.InvokeAsync("Cart", new { view = "Small"})*@

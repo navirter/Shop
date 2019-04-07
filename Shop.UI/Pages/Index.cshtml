@@ -6,16 +6,39 @@
 
 @*Word 'Model' can be used to access the IndexModelClass instance, which is defined in the Index.cshtml.cs file*@
 
-<br/>
-<div>
-    @foreach (var product in Model.Products)
-    {
-        <a asp-page="Product" asp-route-name="@product.Name.Replace(" ", "-")">
-            @*this asp-route-name thing works because i specified he route at the product.cshtml after page*@
-        @product.Name - @product.Description - @product.Value
-    </a>
+<div class="section">
     <br />
-    }
+    <div class="columns is-multiline is-mobile">
+        @for (int i = 0; i < 5; i++)
+        {
+
+            @foreach (var product in Model.Products)
+            {
+                <div class="column is-3-desktop is-4-tablet is-6-mobile">
+                    <a asp-page="Product" asp-route-name="@product.Name.Replace(" ", "-")">
+                        <div class="card">
+                            <div class="card-content">
+                                <p class="title is-size-6">
+                                    @product.Name @product.Value
+                                </p>
+                                <p class="subtitle">
+                                    @product.Description
+                                </p>
+                                <div class="content">
+                                </div>
+                            </div>
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="~/images/Queek Headtaker.jpg" />
+                                    @*<img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">*@
+                                </figure>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+    <br />
 </div>
-<br/>
 @await Component.InvokeAsync("Cart", new { view = "Small"})
