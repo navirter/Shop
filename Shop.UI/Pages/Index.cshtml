@@ -10,11 +10,24 @@
 <div>
     @foreach (var product in Model.Products)
     {
-        <a asp-page="Product" asp-route-name="@product.Name.Replace(" ", "-")">
+        <a class="card" asp-page="Product" asp-route-name="@product.Name.Replace(" ", "-")">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="~/images/Queek Headtaker.jpg" />
+                    @*<img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">*@
+                </figure>
+            </div>
+            <div class="card-content">
+
+                <div class="content">
+                </div>
+            </div>
+        </a>
+        <a>
             @*this asp-route-name thing works because i specified he route at the product.cshtml after page*@
-        @product.Name - @product.Description - @product.Value
-    </a>
-    <br />
+            @product.Name - @product.Description - @product.Value
+        </a>
+        <br />
     }
 </div>
 <br/>
