@@ -34,7 +34,7 @@ namespace Shop.UI
                         };
                         var managerUser = new IdentityUser()
                         {
-                            UserName = "Manger"
+                            UserName = "Manager"//used to be Manger
                         };
                         userManager.CreateAsync(adminUser, "password").GetAwaiter().GetResult();
                         userManager.CreateAsync(managerUser, "password").GetAwaiter().GetResult();

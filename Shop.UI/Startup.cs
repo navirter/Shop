@@ -37,7 +37,8 @@ namespace Shop.UI
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["DefaultConnection"]));
 
-            services.AddDefaultIdentity<IdentityUser>( options =>
+            services.AddIdentity<IdentityUser, IdentityRole>( options =>
+            //not using AddDefaultIdentity<IdentityUser> for not bringing up some default nonimplemeneted razor pages causing some errors
             {
                 options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 6;
@@ -45,6 +46,11 @@ namespace Shop.UI
                 options.Password.RequireUppercase = false;
             })
             .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Account/Login";
+            });
 
             services.AddSession(options =>
             {
@@ -55,11 +61,17 @@ namespace Shop.UI
             services.AddAuthorization( options =>
             {
                 //"don't be rude to our complaints and u're allowed to trade here" next line
-                options.AddPolicy("Admin", policy => policy.RequireClaim("Admin"));//it's specified in the Program.cs   
-                options.AddPolicy("Manager", policy => policy.RequireClaim("Manager"));//it's specified in the Program.cs    
+                options.AddPolicy("Admin", policy => policy.RequireClaim("Role", "Admin"));//it's specified in the Program.cs   
+                options.AddPolicy("Manager", policy => policy.RequireClaim("Role", "Manager"));//it's specified in the Program.cs    
             });//are u allowed ? whereas authentication is who are u
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services
+                .AddMvc()
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AuthorizeFolder("/Admin");
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             StripeConfiguration.SetApiKey(Configuration.GetSection("Stripe")["SecretKey"]);
         }
@@ -85,7 +97,7 @@ namespace Shop.UI
 
             app.UseAuthentication();
 
-            app.UseMvc();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

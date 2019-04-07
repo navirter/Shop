@@ -16,10 +16,9 @@
 </head>
 <body>
     <a asp-page="/Admin/Index">Admin</a>
-    <p class="menu-label"></p>
-    <ul class="menu-list">
-        <li><a asp-page="/Index">Main</a></li>
-    </ul>
+    <a asp-page="/Index">Main</a>
+    <a asp-page="/Account/Login">Login</a>
+    <a asp-controller="Account" asp-action="Logout">Sign Out</a>
 
     <partial name="_CookieConsentPartial" />
 
