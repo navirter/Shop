@@ -62,7 +62,11 @@ namespace Shop.UI
             {
                 //"don't be rude to our complaints and u're allowed to trade here" next line
                 options.AddPolicy("Admin", policy => policy.RequireClaim("Role", "Admin"));//it's specified in the Program.cs   
-                options.AddPolicy("Manager", policy => policy.RequireClaim("Role", "Manager"));//it's specified in the Program.cs    
+                //options.AddPolicy("Manager", policy => policy.RequireClaim("Role", "Manager"));//it's specified in the Program.cs    
+                options.AddPolicy("Manager", policy =>
+                    policy.RequireAssertion(context =>
+                        context.User.HasClaim("Role", "Manager")
+                        || context.User.HasClaim("Role", "Admin")));//i allow the manager policy to be accessed by both manager and admin
             });//are u allowed ? whereas authentication is who are u
 
             services
