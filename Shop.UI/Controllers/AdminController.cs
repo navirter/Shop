@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Shop.UI.Controllers
 {
     [Route("[controller]")]
-    [Authorize(Policy = "Manager")]
+    [Authorize(Policy = "Admin")]
     //[Authorize(Policy = "Admin")] if added along with the previous line, it's neccessary to be both manager and admin to access things
     //so basically only the admin would be able to do things which is unwanted
     public class AdminController:Controller

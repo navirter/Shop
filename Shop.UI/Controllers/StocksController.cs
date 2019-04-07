@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Shop.Application.StockAdmin;
 using Shop.Database;
 using System;
@@ -9,6 +10,8 @@ using System.Threading.Tasks;
 namespace Shop.UI.Controllers
 {
     [Route("[controller]")]
+    [Authorize(Policy = "Manager")]
+
     public class StocksController : Controller
     {
 
