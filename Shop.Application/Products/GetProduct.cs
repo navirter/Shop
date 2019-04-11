@@ -44,7 +44,7 @@ namespace Shop.Application.Products
                    {
                        Id = x.Id,
                        Description = x.Description,
-                       InStock = x.Qty > 0
+                       Qty = x.Qty
                    })
                })
                .FirstOrDefault();
@@ -62,7 +62,7 @@ namespace Shop.Application.Products
         {
             public int Id { get; set; }
             public string Description { get; set; }
-            public bool InStock { get; set; }
+            public int Qty { get; set; }
         }
     }
 }
