@@ -40,11 +40,12 @@ namespace Shop.Application.Products
                    Name = s.Name,
                    Description = s.Description,
                    Value = s.Value.ToString("N2") + "$",  //1100.50 => 1,100.50
-                Stock = s.Stock.Select(x => new StockViewModel
+                   Stock = s.Stock.Select(x => new StockViewModel
                    {
                        Id = x.Id,
                        Description = x.Description,
-                       Qty = x.Qty
+                       Qty = x.Qty,
+                       Price = x.Price                       
                    })
                })
                .FirstOrDefault();
@@ -55,6 +56,8 @@ namespace Shop.Application.Products
             public string Name { get; set; }
             public string Description { get; set; }
             public string Value { get; set; }
+            public decimal PriceMin { get { return Stock.Min(s => s.Price); } }
+            public decimal PriceMax { get { return Stock.Max(s => s.Price); } }
             public IEnumerable<StockViewModel> Stock { get; set; }
         }
 
@@ -62,6 +65,7 @@ namespace Shop.Application.Products
         {
             public int Id { get; set; }
             public string Description { get; set; }
+            public decimal Price { get; set; }
             public int Qty { get; set; }
         }
     }

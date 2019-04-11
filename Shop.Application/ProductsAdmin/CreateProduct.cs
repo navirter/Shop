@@ -22,7 +22,7 @@ namespace Shop.Application.ProductsAdmin
             {
                 Name = request.Name, 
                 Description = request.Description,
-                Value = request.Value
+                Value = request.Value                
             };
             _context.Products.Add(product);
 
