@@ -50,12 +50,23 @@
                                     <div class="field-body">
                                         <div class="field is-narrow">
                                             <div class="control">
-                                                <input class="control" asp-for="CartViewModel.Qty" />
+                                                <input class="input" asp-for="CartViewModel.Qty" value="1"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit">Submit</button>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label"></label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field is-narrow">
+                                            <div class="control">
+                                                <button class="button is-success" type="submit">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </footer>
                     </section>

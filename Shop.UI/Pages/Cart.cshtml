@@ -4,25 +4,44 @@
 }
 
 
-<div>
-    @foreach (var product in Model.Cart.ProductViewModels)
-    {
-        <p>@product.Name</p>
-        <p>@product.ValueToShow</p>
-        <p>@product.Qty</p>
-        <p>@product.StockId</p>
-        <hr />
-    }
-    <label>Total sum: @Model.Cart.TotalPrice</label>
-    <label><a asp-page="/Checkout/Payment">Payment page</a></label>
+<div class="container">
+    <div class="columns">
+        <div class="column is-8 is-offset-2">
+            @foreach (var product in Model.Cart.ProductViewModels)
+            {
+                <div class="level">
+                    <div class="level-item">
+                        <figure class="image is-0 is-128x128">
+                            <img src="~/images/Queek Headtaker.jpg" />
+                        </figure>
+                    </div>
+                    <div class="level-item">
+                        <p class="title">
+                            @product.Name
+                        </p>
+                    </div>
+                    <div class="level-item is-hidden-mobile">
+                        <p>
+                            @product.Qty
+                        </p>
+                    </div>
+                    <div class="level-item">
+                        @product.ValueToShow
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>
 
+<label>Total sum: @Model.Cart.TotalPrice</label>
+<label><a asp-page="/Checkout/Payment">Payment page</a></label>
 
 @*<vc:cart view="Default"> </vc:cart>
 
-<hr />
-        it's a different way to address this componenet
-    <vc:cart view="Small"></vc:cart>@*possible due to the link to Shop.UI at _ViewImports.cshtml. not working*@
+    <hr />
+            it's a different way to address this componenet
+        <vc:cart view="Small"></vc:cart>@*possible due to the link to Shop.UI at _ViewImports.cshtml. not working*@
 
 
 await @Component.InvokeAsync("Cart", new { view = "Small" })
