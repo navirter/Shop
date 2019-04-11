@@ -23,7 +23,7 @@ namespace Shop.UI.Pages
         [BindProperty]
         public AddToCart.Request CartViewModel { get; set; }
 
-        public GetProduct.ProductViewModel Product { get; set; }
+        public GetProduct.ProductViewModel Product { get; set; }        
 
         public async Task<IActionResult> OnGet(string name)
         {

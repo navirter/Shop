@@ -24,14 +24,21 @@ namespace Shop.Application.Cart
         public class Response
         {
             public IEnumerable<ProductViewModel> ProductViewModels { get; set; }
-            public int TotalPrice
+            public decimal TotalPrice
             {
                 get
                 {
                     if (ProductViewModels != null)
-                        return ProductViewModels.Sum(x => x.Qty * x.intValue);
+                        return ProductViewModels.Sum(x => x.Qty * x.ValueDecimal);
                     else
                         return 0;
+                }
+            }
+            public string TotalPriceString
+            {
+                get
+                {
+                    return TotalPrice.ToString() + "$";
                 }
             }
         }
@@ -40,13 +47,13 @@ namespace Shop.Application.Cart
             public string Name { get; set; }
             public string ValueToShow
             {
-                get { return intValue.ToString("N2") + "$"; }
+                get { return ValueDecimal.ToString("N2") + "$"; }
                 set
                 {
-                    intValue = Convert.ToInt32(decimal.Parse(value.Replace("$", ""), System.Globalization.NumberStyles.Any));
+                    ValueDecimal = decimal.Parse(value.Replace("$", ""), System.Globalization.NumberStyles.Any);
                 }
             }
-            public int intValue { get; private set; }
+            public decimal ValueDecimal { get; private set; }
             public int StockId { get; set; }
             public int Qty { get; set; }
 
