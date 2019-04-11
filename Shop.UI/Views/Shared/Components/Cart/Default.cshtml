@@ -8,15 +8,27 @@
 
 
 <div>
-    <h2>Big Cart Component</h2>
+    <p class="title">Cart</p>
     @foreach (var product in Model.ProductViewModels)
     {
-        <div>
-            <span>@product.Name -</span>
-            <span>@product.ValueToShow -</span>
-            <span>@product.Qty</span>
-        </div>
+        <article class="media">
+            <figure class="media-left">
+                <p class="image is-128x128">
+                    <img src="~/images/Queek Headtaker.jpg" />
+                </p>
+            </figure>
+            <div class="media-content">
+                <div class="content">
+                    <p class="title">@product.Name</p>
+                    <div class="level">
+                        <div class="level-item">Quanity: @product.Qty</div>
+                        <div class="level-item">Size: @product.StockId</div>
+                        <div class="level-item">Price: @product.ValueToShow</div>
+                    </div>
+                </div>
+            </div>
+        </article>
     }
     <label>Total sum: @Model.TotalPrice</label>
-    <label><a asp-page="/Checkout/Payment">Payment page</a></label>
+    @*<label><a asp-page="/Checkout/Payment">Payment page</a></label>*@
 </div>

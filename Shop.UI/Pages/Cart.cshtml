@@ -30,12 +30,16 @@
                     </div>
                 </div>
             }
+            <div class="has-text-right">
+                <a asp-page="/Index" class="button is-text">Resume shopping</a>
+                <a asp-page="/Checkout/CustomerInformation" class="button is-success">Checkout</a>
+            </div>
         </div>
     </div>
 </div>
 
 <label>Total sum: @Model.Cart.TotalPrice</label>
-<label><a asp-page="/Checkout/Payment">Payment page</a></label>
+@*<label><a asp-page="/Checkout/Payment">Payment page</a></label>*@
 
 @*<vc:cart view="Default"> </vc:cart>
 
