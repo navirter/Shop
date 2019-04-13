@@ -34,7 +34,7 @@ namespace Shop.UI.Controllers
         public IActionResult GetCategories() => Ok(new Application.Products.GetCategories(_context).Do());
         
         [HttpGet("categories/{category}")]
-        public IActionResult GetCategories(string category) => Ok(new Application.Products.GetProductsByCategory(_context).Do(category));
+        public IActionResult GetCategoryProducts(string category) => Ok(new Application.Products.GetProductsByCategory(_context).Do(category));
 
         [HttpGet("{id}")]
         public IActionResult GetProduct(int id) => Ok(new GetProduct(_context).Do(id));

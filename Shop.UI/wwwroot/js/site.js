@@ -6,11 +6,14 @@
         selectedCategory: "All",
         products: []
     },
-    mounted() {
+    beforeMount() {
         //this.getProducts();
         this.getCategories();
         this.selectCategory("All");
     },//not sure if this runs at page loading as i expect it to
+    mounted() {
+
+    },
     methods: {
         getProducts: function () {
             this.loading = true;
@@ -28,7 +31,7 @@
         },
         getCategories: function () {
             this.loading = true;
-            axios.get('/categories')
+            axios.get('/products/categories')
                 .then(res => {
                     console.log(res);
                     this.categories = res.data;
@@ -43,7 +46,7 @@
         selectCategory: function (category) {
             this.selectedCategory = category;
             this.loading = true;
-            axios.get('/categories/' + category)
+            axios.get('/products/categories/' + category)
                 .then(res => {
                     console.log(res);
                     this.products = res.data;

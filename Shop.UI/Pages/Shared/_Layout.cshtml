@@ -54,11 +54,11 @@
                         </a>
                     }
                     @*else
-                {
-                    <a class="navbar-item" asp-page="/Accounts/login">
-                        Sign In
-                    </a>
-                }*@
+                        {
+                            <a class="navbar-item" asp-page="/Accounts/login">
+                                Sign In
+                            </a>
+                        }*@
                 </div>
             </div>
         </div>
@@ -83,6 +83,11 @@
     <environment exclude="Development">
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
+
+    @section scripts{ 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    }
 
     @RenderSection("Scripts", required: false)
 </body>
