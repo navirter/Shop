@@ -9,6 +9,11 @@
 <div class="section">
     <br />
     <div class="columns is-multiline is-mobile">
+        @foreach (var category in Model.Categories)
+        {
+            <p class="title is-size-5">@category</p>
+
+        }
         @for (int i = 0; i < 5; i++)
         {
             @foreach (var product in Model.Products)
@@ -18,10 +23,13 @@
                         <div class="card">
                             <div class="card-content">
                                 <p class="title is-size-6">
-                                    @product.Name @product.Value
+                                    @product.Name
                                 </p>
                                 <p class="subtitle">
                                     @product.Description
+                                </p>
+                                <p>
+                                    @product.Value    
                                 </p>
                                 @{
                                     string cssClass = "notification";

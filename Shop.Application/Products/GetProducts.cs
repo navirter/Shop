@@ -17,18 +17,24 @@ namespace Shop.Application.Products
             _context = context;
         }
 
-        public IEnumerable<ProductViewModel> Do() =>
-            _context.Products
-            .Include(s=> s.Stock)
-            .Select(s => new ProductViewModel()
-            {
-                Name = s.Name,
-                Description = s.Description,
-                Value = s.Value.ToString("N2") + "$",  //1100.50 => 1,100.50 
-                StockCount = s.Stock.Sum(x=> x.Qty),
-                Category = s.Category
-            })
-            .ToList();
+        public Response Do()
+        {
+            var v = _context.Products
+              .Include(s => s.Stock)
+              .Select(s => new ProductViewModel()
+              {
+                  Name = s.Name,
+                  Description = s.Description,
+                  Value = s.Value.ToString("N2") + "$",  //1100.50 => 1,100.50 
+                  StockCount = s.Stock.Sum(x => x.Qty),
+                  Category = s.Category
+              })
+              .ToList();
+            Response r = new Response() { ProductViewModelsByCategory = new List<List<ProductViewModel>>() };
+            foreach (var group in v.GroupBy(s => s.Category))            
+                r.ProductViewModelsByCategory.Add(new List<ProductViewModel>(group));
+            return r;
+        }
 
         public class ProductViewModel
         {
@@ -37,6 +43,10 @@ namespace Shop.Application.Products
             public string Value { get; set; }
             public string Category { get; set; }
             public int StockCount { get; set; }
+        }
+        public class Response
+        {
+            public List<List<ProductViewModel>> ProductViewModelsByCategory { get; set; }
         }
     }
 }

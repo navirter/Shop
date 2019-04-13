@@ -4,6 +4,7 @@ using Shop.Application.Products;
 using Shop.Database;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Shop.UI.Pages
 {
@@ -17,11 +18,14 @@ namespace Shop.UI.Pages
         }
         
 
-        public IEnumerable<GetProducts.ProductViewModel> Products { get; set; }
+        public GetProducts.Response Products { get; set; }
+        public List<string> Categories { get; set; }
 
         public void OnGet()
         {
             Products = new GetProducts(_context).Do();
+            Categories = new List<string>();
+            Products.ProductViewModelsByCategory.ForEach(s => Categories.Add(s.First().Category));
         }
     }
 }
