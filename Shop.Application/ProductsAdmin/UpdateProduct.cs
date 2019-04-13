@@ -24,6 +24,8 @@ namespace Shop.Application.ProductsAdmin
             product.Name = request.Name;
             product.Description = request.Description;
             product.Value = request.Value;
+            product.PicPath = request.PicPath;
+            product.Category = request.Category;
 
             await _context.SaveChangesAsync();
             return new Response()
@@ -31,7 +33,9 @@ namespace Shop.Application.ProductsAdmin
                 Id = product.Id,
                 Name = product.Name,
                 Description = product.Description,
-                Value = product.Value
+                Value = product.Value,
+                PicPath = product.PicPath,
+                Category = product.Category
             };
         }
 
@@ -41,6 +45,8 @@ namespace Shop.Application.ProductsAdmin
             public string Name { get; set; }
             public string Description { get; set; }
             public decimal Value { get; set; }
+            public string PicPath { get; set; }
+            public string Category { get; set; }
         }
         public class Response
         {
@@ -48,6 +54,8 @@ namespace Shop.Application.ProductsAdmin
             public string Name { get; set; }
             public string Description { get; set; }
             public decimal Value { get; set; }
+            public string PicPath { get; set; }
+            public string Category { get; set; }
         }
     }
 

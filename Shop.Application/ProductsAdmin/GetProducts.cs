@@ -20,16 +20,20 @@ namespace Shop.Application.ProductsAdmin
             {
                 Id = s.Id,
                 Name = s.Name,
-                ////Description = s.Description,
-                Value = s.Value
+                Description = s.Description,
+                Value = s.Value,
+                PicPath = s.PicPath,
+                Category = s.Category
             });
 
         public class ProductViewModel
         {
             public int Id { get; set; }
             public string Name { get; set; }
-            //public string Description { get; set; }
+            public string Description { get; set; }
             public decimal Value { get; set; }
+            public string PicPath { get; set; }
+            public string Category { get; set; }
         }
     }
 }

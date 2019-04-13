@@ -22,7 +22,9 @@ namespace Shop.Application.ProductsAdmin
                 Id = s.Id,
                 Name = s.Name,
                 Description = s.Description,
-                Value = s.Value
+                Value = s.Value,
+                PicPath = s.PicPath,
+                Category = s.Category
             }).FirstOrDefault();
 
         public class ProductViewModel
@@ -31,6 +33,8 @@ namespace Shop.Application.ProductsAdmin
             public string Name { get; set; }
             public string Description { get; set; }
             public decimal Value { get; set; }
+            public string PicPath { get; set; }
+            public string Category { get; set; }
         }
     }
 }

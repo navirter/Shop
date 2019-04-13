@@ -24,7 +24,9 @@ namespace Shop.Application.Products
                 Name = s.Name,
                 Description = s.Description,
                 Value = s.Value.ToString("N2") + "$",  //1100.50 => 1,100.50 
-                StockCount = s.Stock.Sum(x=> x.Qty)
+                StockCount = s.Stock.Sum(x=> x.Qty),
+                Category = s.Category,
+                PicPath = s.PicPath
             })
             .ToList();
 
@@ -33,6 +35,8 @@ namespace Shop.Application.Products
             public string Name { get; set; }
             public string Description { get; set; }
             public string Value { get; set; }
+            public string PicPath { get; set; }
+            public string Category { get; set; }
             public int StockCount { get; set; }
         }
     }

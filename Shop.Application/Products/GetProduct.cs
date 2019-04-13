@@ -40,6 +40,8 @@ namespace Shop.Application.Products
                    Name = s.Name,
                    Description = s.Description,
                    Value = s.Value.ToString("N2") + "$",  //1100.50 => 1,100.50
+                   PicPath = s.PicPath,
+                   Category = s.Category,
                 Stock = s.Stock.Select(x => new StockViewModel
                    {
                        Id = x.Id,
@@ -55,6 +57,8 @@ namespace Shop.Application.Products
             public string Name { get; set; }
             public string Description { get; set; }
             public string Value { get; set; }
+            public string PicPath { get; set; }
+            public string Category { get; set; }
             public IEnumerable<StockViewModel> Stock { get; set; }
         }
 
