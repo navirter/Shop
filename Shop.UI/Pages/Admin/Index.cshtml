@@ -5,6 +5,7 @@
 }
 
 <div id="app" class="container">
+    @*if not editing*@
     <div v-if="!editing">
         <button class="button" @@click="newProduct">Add New Product</button>
         <table class="table">
@@ -12,16 +13,19 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Value</th>
+                <th>Category</th>
             </tr>
             <tr v-for="(product, index) in products">
                 <td>{{product.id}}</td>
                 <td>{{product.name}}</td>
                 <td>{{product.value}}</td>
+                <td>{{product.category}}
                 <td><a @@click="editProduct(product.id, index)">Edit</a></td>
                 <td><a @@click="deleteProduct(product.id, index)">Remove</a></td>
             </tr>
         </table>
     </div>
+    @*if editing*@
     <div class="field" v-else>
         <div class="control">
             <label class="label">Product Name</label>
@@ -34,6 +38,10 @@
         <div class="control">
             <label class="label">Product Value</label>
             <input class="input" v-model="productModel.value" />
+        </div>
+        <div class="control">
+            <label class="label">Product Category</label>
+            <input class="input" v-model="productModel.category" />
         </div>
         <button class="button is-success" @@click="createProduct" v-if="!productModel.id">Create Product</button>
         <button class="button is-warning" @@click="updateProduct" v-else>Update Product</button>

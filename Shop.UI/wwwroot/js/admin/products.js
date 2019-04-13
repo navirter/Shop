@@ -9,7 +9,8 @@
             id: 0,
             name: "Product Name",
             description: "Product Description",
-            value: 1.99
+            value: 1.99,
+            category: ""
         },
         products: []
     },
@@ -27,7 +28,8 @@
                         id: product.id,
                         name: product.name,
                         description: product.description,
-                        value: product.value
+                        value: product.value,
+                        category: product.category
                     };
                 })
                 .catch(err => {
