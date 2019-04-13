@@ -1,4 +1,40 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿var app = new Vue({
+    el: '#app',
+    data: {
+        menu: 0,
+        editing: false,
+        loading: false,
+        objectIndex: 0,
+        productModel: {
+            id: 0,
+            name: "Product Name",
+            description: "Product Description",
+            value: 1.99,
+            category: ""
+        },
+        products: []
+    },
+    mounted() {
+        this.getProducts();
 
-// Write your Javascript code.
+    },
+    methods: {
+        getProducts: function () {
+            this.loading = true;
+            axios.get('/products')
+                .then(res => {
+                    console.log(res);
+                    this.products = res.data;
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                .then(() => {
+                    this.loading = false;
+                });
+        }
+    },
+    computed: {
+
+    }
+});

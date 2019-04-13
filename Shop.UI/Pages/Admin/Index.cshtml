@@ -43,8 +43,8 @@
             <label class="label">Product Category</label>
             <input class="input" v-model="productModel.category" />
         </div>
-        <button class="button is-success" @@click="createProduct" v-if="!productModel.id">Create Product</button>
-        <button class="button is-warning" @@click="updateProduct" v-else>Update Product</button>
+        <button class="button is-success" @@click="createProduct()" v-if="!productModel.id">Create Product(Picture has default path + product.Name)</button>
+        <button class="button is-warning" @@click="updateProduct()" v-else>Update Product</button>
         <button class="button" @@click="cancel">Cancel</button>
     </div>
 </div>

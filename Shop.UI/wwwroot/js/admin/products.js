@@ -16,6 +16,7 @@
     },
     mounted() {
         this.getProducts();
+        
     },
     methods: {
         getProduct: function (id) {
