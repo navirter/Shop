@@ -11,6 +11,9 @@ namespace Shop.Domain.Models
         public string Description { get; set; }
         public decimal Value { get; set; }
 
+        public string PicPath { get; set; }
+        public string Category { get; set; }
+
         public ICollection<Stock> Stock { get; set; }
     }
 }
