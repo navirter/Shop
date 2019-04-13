@@ -24,7 +24,6 @@ namespace Shop.Application.ProductsAdmin
                 Name = s.Name,
                 Description = s.Description,
                 Value = s.Value,
-                PicPath = s.PicPath,
                 Category = s.Category
             }).FirstOrDefault();
 
@@ -34,25 +33,6 @@ namespace Shop.Application.ProductsAdmin
             public string Name { get; set; }
             public string Description { get; set; }
             public decimal Value { get; set; }
-            #region public string PicPath
-            /// <summary>
-            /// Returns empty string if the file doesn't exist
-            /// </summary>
-            public string PicPath
-            {
-                get
-                {
-                    if (!File.Exists(picPath))
-                        picPath = "";
-                    return picPath;
-                }
-                set
-                {
-                    picPath = value;
-                }
-            }
-            string picPath = "";
-            #endregion
             public string Category { get; set; }
         }
     }

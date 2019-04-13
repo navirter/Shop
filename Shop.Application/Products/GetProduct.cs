@@ -41,7 +41,6 @@ namespace Shop.Application.Products
                    Name = s.Name,
                    Description = s.Description,
                    Value = s.Value.ToString("N2") + "$",  //1100.50 => 1,100.50
-                   PicPath = s.PicPath,
                    Category = s.Category,
                 Stock = s.Stock.Select(x => new StockViewModel
                    {
@@ -58,25 +57,6 @@ namespace Shop.Application.Products
             public string Name { get; set; }
             public string Description { get; set; }
             public string Value { get; set; }
-            #region public string PicPath
-            /// <summary>
-            /// Returns empty string if the file doesn't exist
-            /// </summary>
-            public string PicPath
-            {
-                get
-                {
-                    if (!File.Exists(picPath))
-                        picPath = "";
-                    return picPath;
-                }
-                set
-                {
-                    picPath = value;
-                }
-            }
-            string picPath = "";
-            #endregion
             public string Category { get; set; }
             public IEnumerable<StockViewModel> Stock { get; set; }
         }
