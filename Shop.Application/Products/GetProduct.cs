@@ -2,6 +2,7 @@
 using Shop.Database;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,7 +58,25 @@ namespace Shop.Application.Products
             public string Name { get; set; }
             public string Description { get; set; }
             public string Value { get; set; }
-            public string PicPath { get; set; }
+            #region public string PicPath
+            /// <summary>
+            /// Returns empty string if the file doesn't exist
+            /// </summary>
+            public string PicPath
+            {
+                get
+                {
+                    if (!File.Exists(picPath))
+                        picPath = "";
+                    return picPath;
+                }
+                set
+                {
+                    picPath = value;
+                }
+            }
+            string picPath = "";
+            #endregion
             public string Category { get; set; }
             public IEnumerable<StockViewModel> Stock { get; set; }
         }

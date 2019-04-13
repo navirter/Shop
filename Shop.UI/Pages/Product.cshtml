@@ -9,7 +9,14 @@
             <div class="columns">
                 <div class="column is-6">
                     <figure class="image">
-                        <img src="~/images/Queek Headtaker.jpg" />
+                        @if (!string.IsNullOrEmpty(Model.Product.PicPath))
+                        {
+                            <img src="@Model.Product.PicPath" />
+                        }
+                        else
+                        {
+                            <img src="~/images/Queek Headtaker.jpg" />
+                        }
                     </figure>
                 </div>
                 <div class="column is-6">
