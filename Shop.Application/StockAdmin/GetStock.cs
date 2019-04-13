@@ -28,7 +28,6 @@ namespace Shop.Application.StockAdmin
                    {
                         Id = y.Id,
                         Description = y.Description,
-                        Price = y.Price,
                         Qty = y.Qty
                    })
                 })
@@ -41,7 +40,6 @@ namespace Shop.Application.StockAdmin
         {
             public int Id { get; set; }
             public string Description { get; set; }
-            public decimal Price { get; set; }
             public int Qty { get; set; }
         }
 

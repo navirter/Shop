@@ -26,7 +26,6 @@ namespace Shop.Application.StockAdmin
                     Id = stock.Id,
                     ProductId = stock.ProductId,
                     Description = stock.Description,
-                    Price = stock.Price,
                     Qty = stock.Qty
                 });
             }
@@ -44,7 +43,6 @@ namespace Shop.Application.StockAdmin
             public int Id { get; set; }
             public int ProductId { get; set; }
             public string Description { get; set; }
-            public decimal Price { get; set; }
             public int Qty { get; set; }
         }
 
