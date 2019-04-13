@@ -9,27 +9,19 @@
 <div class="section">
     <br />
     <div class="columns is-multiline is-mobile">
-        @foreach (var category in Model.Categories)
+        @foreach (var category in Model.Products.ProductViewModelsByCategory)
         {
-            <p class="title is-size-5">@category</p>
-
-        }
-        @for (int i = 0; i < 5; i++)
-        {
-            @foreach (var product in Model.Products)
+            @foreach (var product in category)
             {
                 <div class="column is-3-desktop is-4-tablet is-6-mobile">
                     <a asp-page="Product" asp-route-name="@product.Name.Replace(" ", "-")">
                         <div class="card">
                             <div class="card-content">
                                 <p class="title is-size-6">
-                                    @product.Name
+                                    @product.Name @product.Value
                                 </p>
                                 <p class="subtitle">
                                     @product.Description
-                                </p>
-                                <p>
-                                    @product.Value    
                                 </p>
                                 @{
                                     string cssClass = "notification";

@@ -19,7 +19,7 @@ namespace Shop.Application.Products
 
         public Response Do()
         {
-            var v = _context.Products
+            var productsToShow = _context.Products
               .Include(s => s.Stock)
               .Select(s => new ProductViewModel()
               {
@@ -30,8 +30,11 @@ namespace Shop.Application.Products
                   Category = s.Category
               })
               .ToList();
+            foreach (var prod in productsToShow)
+                if (string.IsNullOrEmpty(prod.Category))
+                    prod.Category = "Other";
             Response r = new Response() { ProductViewModelsByCategory = new List<List<ProductViewModel>>() };
-            foreach (var group in v.GroupBy(s => s.Category))            
+            foreach (var group in productsToShow.GroupBy(s => s.Category))            
                 r.ProductViewModelsByCategory.Add(new List<ProductViewModel>(group));
             return r;
         }
