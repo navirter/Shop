@@ -34,13 +34,13 @@
                                     <p>
                                         Price: {{product.value}}
                                     </p>
-                                    <div v-if="product.stockCount >= 10" class="notification is-success is-paddingless has-text-centered">
+                                    <div v-if="product.stockCount >= 10" class="notification is-success is-paddingless has-text-centered are-small">
                                         Many in Stock
                                     </div>
-                                    <div v-else-if="product.stockCount <= 0" class="notification is-danger is-paddingless has-text-centered">
+                                    <div v-else-if="product.stockCount <= 0" class="notification is-danger is-paddingless has-text-centered are-small">
                                         None in Stock
                                     </div>
-                                    <div v-else="" class="notification is-warning is-paddingless has-text-centered">
+                                    <div v-else="" class="notification is-warning is-paddingless has-text-centered are-small">
                                         Low in Stock
                                     </div>
                                 </div>
