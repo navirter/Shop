@@ -21,6 +21,7 @@ namespace Shop.Application.Products
         {
             var productsToShow = _context.Products
               .Include(s => s.Stock)
+              .Where(s => !string.IsNullOrEmpty(s.Name))
               .Select(s => new ProductViewModel()
               {
                   Name = s.Name,
@@ -29,7 +30,6 @@ namespace Shop.Application.Products
                   StockCount = s.Stock.Sum(x => x.Qty),
                   Category = s.Category
               })
-              .Where(s => s.Name != "")
               .ToList();
             return new Response() { ProductViewModels = productsToShow}; ;
         }

@@ -21,6 +21,7 @@ namespace Shop.Application.Products
         {
             var productsToShow = _context.Products
               .Include(s => s.Stock)
+              .Where(s => !string.IsNullOrEmpty(s.Name))
               .Select(s => new ProductViewModel()
               {
                   Name = s.Name,
