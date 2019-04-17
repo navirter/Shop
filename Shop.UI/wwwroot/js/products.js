@@ -4,7 +4,7 @@
         loading: false,
         categories: [],//string[]
         selectedCategory: "All",
-        products: []
+        products: [],
         /*
             public string Name { get; set; }
             public string Description { get; set; }
@@ -12,9 +12,19 @@
             public string Category { get; set; }
             public int StockCount { get; set; }
         */
+        selectedProduct: null, 
+        selectedProductNameForRouting: "",
+        selectedProductTitleToShow: "",
+        selectedProductDescription: "",
+        selectedProductPlentyInStock: false,
+        selectedProductLowInStock: false,
+        selectedProductNoInStock: false,
     },
     beforeMount() {        
         this.getCategories();
+        while (loading) {
+            
+        }
         this.selectCategory("All");
     },//not sure if this runs at page loading as i expect it to
     mounted() {
