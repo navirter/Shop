@@ -29,14 +29,9 @@ namespace Shop.Application.Products
                   StockCount = s.Stock.Sum(x => x.Qty),
                   Category = s.Category
               })
+              .Where(s => s.Name != "")
               .ToList();
-            foreach (var prod in productsToShow)
-                if (string.IsNullOrEmpty(prod.Category))
-                    prod.Category = "Other";
-            Response r = new Response() { ProductViewModelsByCategory = new List<List<ProductViewModel>>() };
-            foreach (var group in productsToShow.GroupBy(s => s.Category))            
-                r.ProductViewModelsByCategory.Add(new List<ProductViewModel>(group));
-            return r;
+            return new Response() { ProductViewModels = productsToShow}; ;
         }
 
         public class ProductViewModel
@@ -49,7 +44,7 @@ namespace Shop.Application.Products
         }
         public class Response
         {
-            public List<List<ProductViewModel>> ProductViewModelsByCategory { get; set; }
+            public List<ProductViewModel> ProductViewModels { get; set; }
         }
     }
 }

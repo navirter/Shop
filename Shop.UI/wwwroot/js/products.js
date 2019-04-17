@@ -1,35 +1,25 @@
 ﻿var app = new Vue({
     el: '#app',
-    data: {
+    data: { //this whole data becomes LOWER CASE
         loading: false,
         categories: [],//string[]
-        selectedCategory: "All",
-        products: [],
+        selectedCategory: "",
+        products: null,
         /*
-            public string Name { get; set; }
-            public string Description { get; set; }
-            public string Value { get; set; }
-            public string Category { get; set; }
-            public int StockCount { get; set; }
+            public string Name { get; set; } //LOWER CASE
+            public string Description { get; set; } //LOWER CASE
+            public string Value { get; set; } //LOWER CASE
+            public string Category { get; set; } //LOWER CASE
+            public int StockCount { get; set; } //LOWER CASE
         */
-        selectedProduct: null, 
-        selectedProductNameForRouting: "",
-        selectedProductTitleToShow: "",
-        selectedProductDescription: "",
-        selectedProductPlentyInStock: false,
-        selectedProductLowInStock: false,
-        selectedProductNoInStock: false,
+        selectedProduct: null
     },
-    beforeMount() {        
+    beforeMount() {
         this.getCategories();
-        while (loading) {
-            
-        }
         this.selectCategory("All");
-    },//not sure if this runs at page loading as i expect it to
+    },//Called right before the mounting begins: the render function is about to be called for the first time.
     mounted() {
-
-    },
+    },//Called after the instance has just been mounted where el is replaced by the newly created vm.$el.
     methods: {
         getProducts: function () {
             this.loading = true;
@@ -73,9 +63,15 @@
                 .then(() => {
                     this.loading = false;
                 });
+        }, 
+        selectProduct: function ()
+        {
+
         }
     },
     computed: {
-
+        productsCount: function () {
+            return this.products.count;
+        }
     }
 });

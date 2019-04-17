@@ -25,28 +25,56 @@ namespace Shop.UI.Controllers
         public ProductsController(ApplicationDbContext context)
         {
             _context = context;
-        }        
+        }
 
         [HttpGet("")]
-        public IActionResult GetProducts() => Ok(new GetProducts(_context).Do());
-        
+        public IActionResult GetProducts()
+        {
+            var v = Ok(new GetProducts(_context).Do());
+            return v;
+        }
+
         [HttpGet("categories")]
-        public IActionResult GetCategories() => Ok(new Application.Products.GetCategories(_context).Do());
-        
+        public IActionResult GetCategories()
+        {
+            var v = Ok(new Application.Products.GetCategories(_context).Do());
+            return v;
+        }
+
         [HttpGet("categories/{category}")]
-        public IActionResult GetCategoryProducts(string category) => Ok(new Application.Products.GetProductsByCategory(_context).Do(category));
+        public IActionResult GetCategoryProducts(string category)
+        {
+            var v = Ok(new Application.Products.GetProductsByCategory(_context).Do(category));
+            return v;
+        }
 
         [HttpGet("{id}")]
-        public IActionResult GetProduct(int id) => Ok(new GetProduct(_context).Do(id));
+        public IActionResult GetProduct(int id)
+        {
+            var v = Ok(new GetProduct(_context).Do(id));
+            return v;
+        }
 
         [HttpPost("")]
-        public async Task<IActionResult> CreateProduct([FromBody]CreateProduct.Request request) => Ok(await new CreateProduct(_context).Do(request));
+        public async Task<IActionResult> CreateProduct([FromBody]CreateProduct.Request request)
+        {
+            var v = Ok(await new CreateProduct(_context).Do(request));
+            return v;
+        }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(int id) => Ok(await new DeleteProduct(_context).Do(id));
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var v = Ok(await new DeleteProduct(_context).Do(id));
+            return v;
+        }
 
         [HttpPut("")]
-        public async Task<IActionResult> UpdateProduct([FromBody]UpdateProduct.Request request) => Ok(await new UpdateProduct(_context).Do(request));
+        public async Task<IActionResult> UpdateProduct([FromBody]UpdateProduct.Request request)
+        {
+            var v = Ok(await new UpdateProduct(_context).Do(request));
+            return v;
+        }
         
     }
 }

@@ -20,12 +20,15 @@ namespace Shop.Application.Products
             var categories = _context.Products
                 .GroupBy(s => s.Category)
                 .Select(s => s.First().Category).ToList();
+            List<string> res = new List<string>();
+            res.Add("All");
             for (int i = 0; i < categories.Count; i++)
             {
                 if (categories[i] == "")
                     categories[i] = "Other";
-            }
-            return categories;
+                res.Add(categories[i]);
+            }            
+            return res;
         }
 
     }

@@ -25,7 +25,11 @@ namespace Shop.UI.Pages
         {
             Products = new GetProducts(_context).Do();
             Categories = new List<string>();
-            Products.ProductViewModelsByCategory.ForEach(s => Categories.Add(s.First().Category));
+            Products.ProductViewModels.ForEach(s =>
+            {
+                if (!Categories.Any(a => a == s.Category))
+                    Categories.Add(s.Category);
+            });
         }
     }
 }
