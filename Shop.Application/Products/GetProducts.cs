@@ -26,6 +26,7 @@ namespace Shop.Application.Products
               {
                   Name = s.Name,
                   Description = s.Description,
+                  DescriptionShort = s.Description.Substring(0, 30)+"...",
                   Value = s.Value.ToString("N2") + "$",  //1100.50 => 1,100.50 
                   StockCount = s.Stock.Sum(x => x.Qty),
                   Category = s.Category
@@ -38,9 +39,11 @@ namespace Shop.Application.Products
         {
             public string Name { get; set; }
             public string Description { get; set; }
+            public string DescriptionShort { get; set; }
             public string Value { get; set; }
             public string Category { get; set; }
             public int StockCount { get; set; }
+            public string NameForRoute { get; set; }
         }
         public class Response
         {
