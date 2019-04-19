@@ -29,8 +29,7 @@ namespace Shop.Application.Products
                   DescriptionShort = s.Description.Substring(0, 30) + "...",
                   Value = s.Value.ToString("N2") + "$",  //1100.50 => 1,100.50 
                   StockCount = s.Stock.Sum(x => x.Qty),
-                  Category = s.Category,
-                  NameForRoute = "/Product/" + s.Name.Replace(" ", "-")
+                  Category = s.Category
               })
               .ToList();
             return new Response() { ProductViewModels = productsToShow}; ;
@@ -39,12 +38,12 @@ namespace Shop.Application.Products
         public class ProductViewModel
         {
             public string Name { get; set; }
+            public string NameForRoute { get { return Name.Replace(" ", "-"); } }
             public string Description { get; set; }
             public string DescriptionShort { get; set; }
             public string Value { get; set; }
             public string Category { get; set; }
             public int StockCount { get; set; }
-            public string NameForRoute { get; set; }
         }
         public class Response
         {

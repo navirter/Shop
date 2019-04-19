@@ -55,6 +55,7 @@ namespace Shop.Application.Products
         public class ProductViewModel
         {
             public string Name { get; set; }
+            public string NameForRoute { get { return Name.Replace(" ", "-"); } }
             public string Description { get; set; }
             public string Value { get; set; }
             public string Category { get; set; }

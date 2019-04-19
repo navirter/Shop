@@ -31,6 +31,7 @@ namespace Shop.Application.ProductsAdmin
         {
             public int Id { get; set; }
             public string Name { get; set; }
+            public string NameForRoute { get { return Name.Replace(" ", "-"); } }
             public string Description { get; set; }
             public decimal Value { get; set; }
             public string Category { get; set; }
