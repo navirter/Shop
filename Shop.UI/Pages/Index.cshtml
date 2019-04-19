@@ -20,11 +20,11 @@
             </ul>
         </div>
         @*products column*@
-        <div class="column is-size-6">
-                <div v-for="product in products.productViewModels">
-                    <div> 
+        <div class="column is-size-6 is-horizontal">
+                <div v-for="product in products.productViewModels" style="width: 280px; height: 280px; padding-top: 0px; padding-bottom: 0px; display: inline-block;">
+                    <div class="container"> 
                         <a v-bind:href="product.nameForRoute">
-                            <div class="card, are-small">
+                            <div class="card are-small">
                                 <div class="card-content">
                                     <p class="title">
                                         {{product.name}}
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                         </a>
-                    </div>
+                    </div>  
                 </div>
         </div>
     </div>
