@@ -25,3 +25,21 @@
 .StripeElement--webkit-autofill {
     background-color: #fefde5 !important;
 }
+
+.Product-card-little {
+    margin: 0 10px 25px 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 0;
+    font: inherit;
+
+    min-width: 280px;
+    width: 280px;
+    max-width: 280px;
+    min-height: 280px;
+    height: 280px;
+    max-height: 280px;
+
+    vertical-align: baseline;
+    display: inline-block;
+}

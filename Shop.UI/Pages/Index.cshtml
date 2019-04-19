@@ -8,7 +8,7 @@
 
 <div id="app" class="section">
     <br />
-    <div class="columns is-multiline is-mobile">
+    <div class="columns is-mobile">
         @*category column*@
         <div class="column is-3">
             <ul class="menu-list">
@@ -19,12 +19,12 @@
                 </li>
             </ul>
         </div>
-        @*products column*@
-        <div class="column is-size-6 is-horizontal">
-            <div v-for="product in products.productViewModels" style="width: 280px; height: 280px; padding-top: 0px; padding-bottom: 0px; display: inline-block;">
+        @*products column. This structure is responsibile for correct lining and columning and stuff, not some weird stylizations*@
+        <div class="column is-size-6 is-multiline">
+            <div v-for="product in products.productViewModels">
                 <div class="container">
                     <a v-bind:href="product.nameForRoute">
-                        <div class="card are-small">
+                        <div class="card">
                             <div class="card-content">
                                 <p class="title">
                                     {{product.name}}
@@ -54,7 +54,7 @@
                         </div>
                     </a>
                 </div>
-            </div>
+            </div>            
         </div>
     </div>
     <br />
@@ -64,5 +64,5 @@
 @section scripts{
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="~/js/products.js"></script>
+    <script src="~/js/products.js"></script>   
 }
