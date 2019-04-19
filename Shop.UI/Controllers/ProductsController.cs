@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 using Shop.Application.ProductsAdmin;
@@ -21,10 +22,12 @@ namespace Shop.UI.Controllers
 
 
         private ApplicationDbContext _context;
+        private IHostingEnvironment _environment;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext context, IHostingEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
         [HttpGet("")]
@@ -58,7 +61,7 @@ namespace Shop.UI.Controllers
         [HttpPost("")]
         public async Task<IActionResult> CreateProduct([FromBody]CreateProduct.Request request)
         {
-            var v = Ok(await new CreateProduct(_context).Do(request));
+            var v = Ok(await new CreateProduct(_context, _environment).Do(request));
             return v;
         }
 
