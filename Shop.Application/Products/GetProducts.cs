@@ -26,10 +26,11 @@ namespace Shop.Application.Products
               {
                   Name = s.Name,
                   Description = s.Description,
-                  DescriptionShort = s.Description.Substring(0, 30)+"...",
+                  DescriptionShort = s.Description.Substring(0, 30) + "...",
                   Value = s.Value.ToString("N2") + "$",  //1100.50 => 1,100.50 
                   StockCount = s.Stock.Sum(x => x.Qty),
-                  Category = s.Category
+                  Category = s.Category,
+                  NameForRoute = "/Product/" + s.Name.Replace(" ", "-")
               })
               .ToList();
             return new Response() { ProductViewModels = productsToShow}; ;

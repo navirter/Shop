@@ -22,7 +22,8 @@
         @*products column*@
         <div class="column is-size-6">
                 <div v-for="product in products.productViewModels">
-                        <a asp-page="Product" asp-route-name="{{product.nameForRoute}}">
+                    <div> 
+                        <a v-bind:href="product.nameForRoute">
                             <div class="card, are-small">
                                 <div class="card-content">
                                     <p class="title">
@@ -45,12 +46,13 @@
                                     </div>
                                 </div>
                                 <div class="card-image">
-                                        @*TODO: Fit here a unique picture*@
-                                        <img src="~/images/Queek Headtaker.jpg" style="max-width:256px; max-height:256px"/>
-                                    
+                                    @*TODO: Fit here a unique picture*@                                    
+                                    <img v-bind:src="~/images/ProductsImages/{{product.nameForRoute}}" style="max-width:256px; max-height:256px" />
+                                    <img src="~/images/Queek Headtaker.jpg" style="max-width:256px; max-height:256px" />
                                 </div>
                             </div>
                         </a>
+                    </div>
                 </div>
         </div>
     </div>
