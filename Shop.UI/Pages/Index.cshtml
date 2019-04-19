@@ -21,38 +21,40 @@
         </div>
         @*products column*@
         <div class="column is-size-6 is-horizontal">
-                <div v-for="product in products.productViewModels" style="width: 280px; height: 280px; padding-top: 0px; padding-bottom: 0px; display: inline-block;">
-                    <div class="container"> 
-                        <a v-bind:href="product.nameForRoute">
-                            <div class="card are-small">
-                                <div class="card-content">
-                                    <p class="title">
-                                        {{product.name}}
-                                    </p>
-                                    <p class="subtitle">
-                                        {{product.descriptionShort}}
-                                    </p>
-                                    <p>
-                                        Price: {{product.value}}
-                                    </p>
-                                    <div v-if="product.stockCount >= 10" class="notification is-success is-paddingless has-text-centered are-small">
+            <div v-for="product in products.productViewModels" style="width: 280px; height: 280px; padding-top: 0px; padding-bottom: 0px; display: inline-block;">
+                <div class="container">
+                    <a v-bind:href="product.nameForRoute">
+                        <div class="card are-small">
+                            <div class="card-content">
+                                <p class="title">
+                                    {{product.name}}
+                                </p>
+                                <p class="subtitle">
+                                    {{product.descriptionShort}}
+                                </p>
+                                <p>
+                                    Price: {{product.value}}
+                                </p>
+                                <div style="max-width:inherit; width:inherit;">
+                                    <div v-if="product.stockCount >= 10" class="notification is-success is-paddingless has-text-centered are-small" style="max-width:inherit; width:inherit;">
                                         Many in Stock
                                     </div>
-                                    <div v-else-if="product.stockCount <= 0" class="notification is-danger is-paddingless has-text-centered are-small">
+                                    <div v-else-if="product.stockCount <= 0" class="notification is-danger is-paddingless has-text-centered are-small" style="max-width:inherit; width:inherit;">
                                         None in Stock
                                     </div>
                                     <div v-else="" class="notification is-warning is-paddingless has-text-centered are-small">
                                         Low in Stock
                                     </div>
                                 </div>
-                                <div class="card-image">
-                                    @*TODO: Fit here a unique picture via v-bind:src=""*@    
-                                    <img src="~/images/Queek Headtaker.jpg" style="max-width:256px; max-height:256px" />                                    
-                                </div>
                             </div>
-                        </a>
-                    </div>  
+                            <div class="card-image">
+                                @*TODO: Fit here a unique picture via v-bind:src=""*@
+                                <img src="~/images/Queek Headtaker.jpg" style="max-width:256px; max-height:256px" />
+                            </div>
+                        </div>
+                    </a>
                 </div>
+            </div>
         </div>
     </div>
     <br />

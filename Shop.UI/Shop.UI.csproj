@@ -5,9 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\images\ProductsImages\**" />
     <Compile Remove="wwwroot\lib\bulma-0.7.4 - Copy\**" />
+    <Content Remove="wwwroot\images\ProductsImages\**" />
     <Content Remove="wwwroot\lib\bulma-0.7.4 - Copy\**" />
+    <EmbeddedResource Remove="wwwroot\images\ProductsImages\**" />
     <EmbeddedResource Remove="wwwroot\lib\bulma-0.7.4 - Copy\**" />
+    <None Remove="wwwroot\images\ProductsImages\**" />
     <None Remove="wwwroot\lib\bulma-0.7.4 - Copy\**" />
   </ItemGroup>
 
@@ -91,7 +95,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\Product\" />
-    <Folder Include="wwwroot\images\ProductsImages\" />
   </ItemGroup>
 
 </Project>
