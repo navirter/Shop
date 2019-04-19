@@ -21,41 +21,57 @@
         </div>
         @*products column. This structure is responsibile for correct lining and columning and stuff, not some weird stylizations*@
         <div class="column is-size-6 is-multiline">
-            <div v-for="product in products.productViewModels">
-                <div class="container">
-                    <a v-bind:href="product.nameForRoute">
-                        <div class="card">
-                            <div class="card-content">
-                                <p class="title">
-                                    {{product.name}}
-                                </p>
-                                <p class="subtitle">
-                                    {{product.descriptionShort}}
-                                </p>
-                                <p>
-                                    Price: {{product.value}}
-                                </p>
-                                <div style="max-width:inherit; width:inherit;">
-                                    <div v-if="product.stockCount >= 10" class="notification is-success is-paddingless has-text-centered are-small" style="max-width:inherit; width:inherit;">
-                                        Many in Stock
-                                    </div>
-                                    <div v-else-if="product.stockCount <= 0" class="notification is-danger is-paddingless has-text-centered are-small" style="max-width:inherit; width:inherit;">
-                                        None in Stock
-                                    </div>
-                                    <div v-else="" class="notification is-warning is-paddingless has-text-centered are-small" style="max-width:inherit; width:inherit;">
-                                        Low in Stock
-                                    </div>
+            <div class="columns">
+                <div class="column" id="column1" />
+                <div class="column" id="column2" />
+                <div class="column" id="column3" />
+                <div class="column" id="column4" />
+            </div>
+            @for (int i = 1; i <= 4; i++)
+            {
+                <div v-for="product in products.productViewModels">
+                    <script type="text/javascript">
+                        function AddElement(columnId, child) {
+                            var column = document.getElementById("column" + columnId);
+                            column.AddElement(child);
+                        AddElement(i, container);
+                    </script>
+                </div>
+            }
+            <div class="container">
+                <a v-bind:href="product.nameForRoute">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title">
+                                {{product.name}}
+                            </p>
+                            <p class="subtitle">
+                                {{product.descriptionShort}}
+                            </p>
+                            <p>
+                                Price: {{product.value}}
+                            </p>
+                            <div style="max-width:inherit; width:inherit;">
+                                <div v-if="product.stockCount >= 10" class="notification is-success is-paddingless has-text-centered are-small" style="max-width:inherit; width:inherit;">
+                                    Many in Stock
+                                </div>
+                                <div v-else-if="product.stockCount <= 0" class="notification is-danger is-paddingless has-text-centered are-small" style="max-width:inherit; width:inherit;">
+                                    None in Stock
+                                </div>
+                                <div v-else="" class="notification is-warning is-paddingless has-text-centered are-small" style="max-width:inherit; width:inherit;">
+                                    Low in Stock
                                 </div>
                             </div>
-                            <div class="card-image">
-                                @*TODO: Fit here a unique picture via v-bind:src=""*@
-                                <img src="~/images/Queek Headtaker.jpg" style="max-width:256px; max-height:256px" />
-                            </div>
                         </div>
-                    </a>
-                </div>
-            </div>            
+                        <div class="card-image">
+                            @*TODO: Fit here a unique picture via v-bind:src=""*@
+                            <img src="~/images/Queek Headtaker.jpg" style="max-width:256px; max-height:256px" />
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
+            </div>
     </div>
     <br />
 </div>
