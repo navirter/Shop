@@ -54,7 +54,7 @@
                                             <div class="control">
                                                 <input class="input" asp-for="CartViewModel.Qty" value="1" />
                                             </div>
-                                            @foreach (var stock in Model.Product.Stock)
+                                            @*@foreach (var stock in Model.Product.Stock)
                                             {
                                                 string textToShow = "";
                                                 @if (stock.Qty == 0)
@@ -68,7 +68,7 @@
                                                 <p class="help is-danger is-hidden low-stock" id="low-stock-@stock.Id">
                                                     @textToShow
                                                 </p>@*Gotta use vue.js for this*@
-                                            }
+                                            }*@
                                         </div>
                                     </div>
                                 </div>
