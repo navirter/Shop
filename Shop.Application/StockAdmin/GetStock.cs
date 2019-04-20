@@ -28,8 +28,26 @@ namespace Shop.Application.StockAdmin
                    {
                         Id = y.Id,
                         Description = y.Description,
-                        Qty = y.Qty
+                        Qty = y.Qty,
+                        Price = y.Price
                    })
+                })
+                .ToList();
+
+            return stock;
+        }
+
+        public IEnumerable<StockViewModel> Do(int productId)
+        {
+            //var product = _context.Products.FirstOrDefault(s => s.Id == productId);
+            var stock = _context.Stock
+                .Where(s => s.ProductId == productId)
+                .Select(y => new StockViewModel
+                {
+                    Id = y.Id,
+                    Description = y.Description,
+                    Qty = y.Qty,
+                    Price = y.Price
                 })
                 .ToList();
 
@@ -41,6 +59,7 @@ namespace Shop.Application.StockAdmin
             public int Id { get; set; }
             public string Description { get; set; }
             public int Qty { get; set; }
+            public int Price { get; set; }
         }
 
         public class ProductViewModel

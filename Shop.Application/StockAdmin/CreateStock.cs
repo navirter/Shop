@@ -22,7 +22,8 @@ namespace Shop.Application.StockAdmin
             {
                 ProductId = request.ProductId,
                 Description = request.Description,
-                Qty = request.Qty
+                Qty = request.Qty,
+                Price = request.Price
             };
             try
             {
@@ -37,7 +38,8 @@ namespace Shop.Application.StockAdmin
             {
                 Id = stock.Id,
                 Description = stock.Description,
-                Qty = stock.Qty            
+                Qty = stock.Qty,
+                Price = stock.Price
             };
         }
 
@@ -46,6 +48,7 @@ namespace Shop.Application.StockAdmin
             public int ProductId { get; set; }
             public string Description { get; set; }
             public int Qty { get; set; }
+            public int Price { get; set; }
         }
 
         public class Response
@@ -53,6 +56,7 @@ namespace Shop.Application.StockAdmin
             public int Id { get; set; }
             public string Description { get; set; }
             public int Qty { get; set; }
+            public int Price { get; set; }
         }
     }
 }

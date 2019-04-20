@@ -14,6 +14,10 @@
         @* = include="Production" *@
         <link href="~/lib/bulma-0.7.4/css/bulma.css" rel="stylesheet" />
     </environment>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="~/js/admin/stock.js"></script>
 </head>
 <body>
     <h3 class="title has-text-centered">Admin Panel</h3>
@@ -28,8 +32,8 @@
                         <ul class="menu-list">
                             @*these things point not at the AdminController staff, but at the .cshtml files*@
                             <li><a asp-page="/Admin/Index">Products</a></li>
-                            <li><a asp-page="/Admin/Orders">Orders</a></li>
                             <li><a asp-page="/Admin/Stock">Stock</a></li>
+                            <li><a asp-page="/Admin/Orders">Orders</a></li>
                         </ul>
                     }
                     @if ((await authService.AuthorizeAsync(User, "Admin")).Succeeded)
@@ -49,9 +53,9 @@
     </div>
 
     @*@section scripts{
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    }*@
+            <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        }*@
 
     @RenderSection("Scripts", required: false)
 </body>

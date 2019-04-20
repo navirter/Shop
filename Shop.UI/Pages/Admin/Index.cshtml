@@ -4,6 +4,12 @@
 @{
 }
 
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="~/js/admin/products.js"></script>
+}
+
 <div id="app" class="container">
     @*if not editing*@
     <div v-if="!editing">
@@ -48,10 +54,3 @@
         <button class="button" @@click="cancel">Cancel</button>
     </div>
 </div>
-
-
-@section scripts{
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="~/js/admin/products.js"></script>
-}

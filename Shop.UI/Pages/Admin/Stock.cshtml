@@ -4,25 +4,35 @@
 @{
 }
 
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="~/js/admin/stock.js"></script>
+}
+
 <div id="app">
     <div class="columns">
+        @*list of existing products*@
         <div class="column is-3">
             <table class="table">
                 <tr v-for="product in products" @@click="selectProduct(product)">
-                    <td>{{product.description}}</td>
+                    <td>{{product.name}}</td>
                 </tr>
             </table>
         </div>
+        @*list of existing stocks*@
         <div class="column is-6" v-if="selectedProduct">
             <table class="table">
-                <tr v-for="(stock, index) in selectedProduct.stock">
-                    <td><input class="input" v-model="stock.description"/></td>
-                    <td><input class="input" type="number" v-model="stock.qty"/></td>
+                <tr v-for="(stock, index) in productStock">
+                    <td><input class="input" v-model="stock.description" /></td>
+                    <td><input class="input" type="number" v-model="stock.qty" /></td>
+                    <td><input class="input" type="number" v-model="stock.price" /></td>
                     <td><a class="has-text-danger" @@click="deleteStock(stock.id, index)">Delete</a></td>
                 </tr>
             </table>
             <a class="button is-warning" @@click="updateStock">Update Stock</a>
         </div>
+        @*Create new stock column*@
         <div class="column is-3" v-if="selectedProduct">
             <h2 class="title">New Stock</h2>
             <div class="field">
@@ -35,11 +45,13 @@
                     <input class="input" type="number" v-model="newStock.qty" />
                 </div>
             </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input" type="number" v-model="newStock.price" />
+                </div>
+            </div>
             <a class="button is-success" @@click="addStock">Add</a>
         </div>
     </div>
 </div>
 
-@section scripts{ 
-<script src="~/js/admin/stock.js"></script>
-}
