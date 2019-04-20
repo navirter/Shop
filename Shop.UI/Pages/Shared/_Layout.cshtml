@@ -9,10 +9,14 @@
         <link rel="stylesheet" href="~/css/site.css" />
         <link href="~/lib/bulma-0.7.4/css/bulma.css" rel="stylesheet" />
     </environment>
-    <environment exclude="Development">      @* = include="Production" *@
+    <environment exclude="Development">
+        @* = include="Production" *@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         <link href="~/lib/bulma-0.7.4/css/bulma.css" rel="stylesheet" />
     </environment>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     @* obsolete version
@@ -85,8 +89,6 @@
     </environment>
 
     @section scripts{
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     }
 
     @RenderSection("Scripts", required: false)
